@@ -1,0 +1,9 @@
+.profile__info {
+  display: flex;
+  flex: 1;
+  flex-wrap: wrap;
+  align-items: baseline;
+  min-height: 73px;
+  padding: 0 30px;
+  color: #ffffff;
+}
