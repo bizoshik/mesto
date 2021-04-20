@@ -1,0 +1,10 @@
+.element__info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  padding-left: 21px;
+  padding-right: 15px;
+  flex: 1;
+  width: 100%;
+}
