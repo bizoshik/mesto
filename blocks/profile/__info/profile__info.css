@@ -1,9 +1,13 @@
 .profile__info {
-  display: flex;
   flex: 1;
-  flex-wrap: wrap;
-  align-items: baseline;
+  min-width: 0;
   min-height: 73px;
   padding: 0 30px;
   color: #ffffff;
+}
+
+@media (max-width: 767px) {
+  .profile__info {
+    justify-content: center;
+  }
 }

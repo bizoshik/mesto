@@ -1,6 +1,27 @@
 .header {
-  min-width: 880px;
-  min-height: 74px;
+  position: relative;
   padding-top: 45px;
-  border-bottom: 1px solid rgba(54, 54, 54, 0.7);
+  padding-bottom: 41px;
+}
+
+.header::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50px;
+  right: 50px;
+  height: 1px;
+  background-color: rgba(54, 54, 54, 0.7);
+}
+
+@media (max-width: 767px) {
+  .header::before {
+    left: 0px;
+    right: 0px;
+  }
+
+  .header {
+    padding-top: 28px;
+    padding-bottom: 31px;
+  }
 }

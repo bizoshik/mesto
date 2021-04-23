@@ -1,4 +1,11 @@
 .centered {
   max-width: 880px;
+  padding: 0 50px;
   margin: 0 auto;
+}
+
+@media (max-width: 767px) {
+  .centered {
+    padding: 0 20px;
+  }
 }
