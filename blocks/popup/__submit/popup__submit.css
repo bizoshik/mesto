@@ -10,3 +10,10 @@
   opacity: 0.8;
   cursor: pointer;
 }
+
+@media (max-width: 767px) {
+  .popup__submit {
+    width: 238px;
+    height: 46px;
+  }
+}

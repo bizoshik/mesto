@@ -10,7 +10,6 @@
 
 @media (max-width: 767px) {
   .profile__title {
-    flex: none;
     padding-bottom: 14px;
     font-size: 27px;
   }
