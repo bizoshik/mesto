@@ -1,5 +1,5 @@
 .popup__submit {
-  width: 358px;
+  /* это кнопка, в ней нет динамического контента, по макета она 50 в высоту */
   height: 50px;
   border: none;
   color: #ffffff;
@@ -13,7 +13,6 @@
 
 @media (max-width: 767px) {
   .popup__submit {
-    width: 238px;
     height: 46px;
   }
 }
