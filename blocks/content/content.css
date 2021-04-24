@@ -1,0 +1,13 @@
+.content {
+  box-sizing: border-box;
+  max-width: 980px;
+  min-width: 320px;
+  padding: 0 50px;
+  margin: 0 auto;
+}
+
+@media (max-width: 767px) {
+  .content {
+    padding: 0 19px;
+  }
+}

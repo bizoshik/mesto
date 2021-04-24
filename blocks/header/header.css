@@ -8,16 +8,16 @@
   content: "";
   position: absolute;
   bottom: 0;
-  left: 50px;
-  right: 50px;
+  left: 0px;
+  right: 0px;
   height: 1px;
   background-color: rgba(54, 54, 54, 0.7);
 }
 
 @media (max-width: 767px) {
   .header::before {
-    left: 0px;
-    right: 0px;
+    left: -19px;
+    right: -19px;
   }
 
   .header {
