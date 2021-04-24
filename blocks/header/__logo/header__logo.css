@@ -1,6 +1,7 @@
 .header__logo {
   width: 142px;
   height: 33px;
+  transition: opacity 0.2s;
 }
 
 .header__logo:hover {
