@@ -137,6 +137,14 @@ function createCard(name, imgSrc) {
 
   const cardButton = document.createElement("button");
   cardButton.classList.add("elements__like-button");
+  cardButton.addEventListener("click", () => {
+    const activeClass = "elements__like-button_active";
+    if (cardButton.classList.contains(activeClass)) {
+      cardButton.classList.remove(activeClass);
+    } else {
+      cardButton.classList.add(activeClass);
+    }
+  });
 
   cardInfo.append(cardTitle, cardButton);
   card.append(cardImage, cardInfo);
