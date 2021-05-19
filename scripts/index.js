@@ -103,6 +103,8 @@ function openAddPopup() {
 }
 
 function closeAddPopup() {
+  cardAddPopupNameInput.value = "";
+  cardAddPopupImageLinkInput.value = "";
   cardAddPopup.classList.remove("popup_visible");
 }
 
