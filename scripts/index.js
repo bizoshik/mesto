@@ -4,35 +4,69 @@ let profileName = document.querySelector(".profile__title");
 let profileDescription = document.querySelector(".profile__subtitle");
 let profileEditButton = document.querySelector(".profile__edit-button");
 
-let popup = document.querySelector(".popup");
-let popupCloseButton = document.querySelector(".popup__close");
-let popupForm = document.querySelector(".popup__form");
-let popupNameInput = document.querySelector(".popup__input[name=name]");
-let popupDescriptionInput = document.querySelector(
-  ".popup__input[name=description]"
+let profileEditPopup = document.querySelector("#profile-edit-popup");
+let profileEditPopupCloseButton = document.querySelector(
+  "#profile-edit-popup .popup__close"
+);
+let profileEditPopupForm = document.querySelector(
+  "#profile-edit-popup .popup__form"
+);
+let profileEditPopupNameInput = document.querySelector(
+  "#profile-edit-popup .popup__input[name=name]"
+);
+let profileEditPopupDescriptionInput = document.querySelector(
+  "#profile-edit-popup .popup__input[name=description]"
 );
 
 profileEditButton.addEventListener("click", openPopup);
-popupCloseButton.addEventListener("click", closePopup);
-popupForm.addEventListener("submit", submitPopup);
+profileEditPopupCloseButton.addEventListener("click", closePopup);
+profileEditPopupForm.addEventListener("submit", submitPopup);
 
 function submitPopup(event) {
   event.preventDefault();
-  profileName.textContent = popupNameInput.value;
-  profileDescription.textContent = popupDescriptionInput.value;
+  profileName.textContent = profileEditPopupNameInput.value;
+  profileDescription.textContent = profileEditPopupDescriptionInput.value;
   closePopup();
 }
 
 function openPopup() {
-  popupNameInput.value = profileName.textContent;
-  popupDescriptionInput.value = profileDescription.textContent;
-  popup.classList.add("popup_visible");
+  profileEditPopupNameInput.value = profileName.textContent;
+  profileEditPopupDescriptionInput.value = profileDescription.textContent;
+  profileEditPopup.classList.add("popup_visible");
 }
 
 function closePopup() {
-  popup.classList.remove("popup_visible");
+  profileEditPopup.classList.remove("popup_visible");
 }
 
+/* Модалка добавления новых карточек */
+
+let profileAddButton = document.querySelector(".profile__add-button");
+
+let profileAddPopup = document.querySelector("#profile-add-popup");
+let profileAddPopupCloseButton = document.querySelector(
+  "#profile-add-popup .popup__close"
+);
+let profileAddPopupForm = document.querySelector(
+  "#profile-add-popup .popup__form"
+);
+let profileAddPopupNameInput = document.querySelector(
+  "#profile-add-popup .popup__input[name=card-name]"
+);
+let profileAddPopupDescriptionInput = document.querySelector(
+  "#profile-add-popup .popup__input[name=image-link]"
+);
+
+profileAddButton.addEventListener("click", openAddPopup);
+profileAddPopupCloseButton.addEventListener("click", closeAddPopup);
+
+function openAddPopup() {
+  profileAddPopup.classList.add("popup_visible");
+}
+
+function closeAddPopup() {
+  profileAddPopup.classList.remove("popup_visible");
+}
 /* Карточки мест */
 
 const initialCards = [
@@ -64,13 +98,23 @@ const initialCards = [
 
 const cards = document.querySelector(".elements");
 
-const cardsElements = initialCards.map(({ name, link }) => {
+const cardsElements = initialCards.map(({ name, link }) =>
+  createCard(name, link)
+);
+
+cards.append(...cardsElements);
+
+/* */
+
+/* */
+
+function createCard(name, imgSrc) {
   const card = document.createElement("article");
   card.classList.add("elements__element");
 
   const cardImage = document.createElement("img");
   cardImage.classList.add("elements__image");
-  cardImage.src = link;
+  cardImage.src = imgSrc;
 
   const cardInfo = document.createElement("div");
   cardInfo.classList.add("elements__info");
@@ -86,6 +130,4 @@ const cardsElements = initialCards.map(({ name, link }) => {
   card.append(cardImage, cardInfo);
 
   return card;
-});
-
-cards.append(...cardsElements);
+}
