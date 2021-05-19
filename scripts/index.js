@@ -1,3 +1,7 @@
+/* Общие элементы */
+
+const cards = document.querySelector(".elements");
+
 /* Модалка редактирования профиля */
 
 let profileName = document.querySelector(".profile__title");
@@ -39,34 +43,6 @@ function closePopup() {
   profileEditPopup.classList.remove("popup_visible");
 }
 
-/* Модалка добавления новых карточек */
-
-let profileAddButton = document.querySelector(".profile__add-button");
-
-let profileAddPopup = document.querySelector("#profile-add-popup");
-let profileAddPopupCloseButton = document.querySelector(
-  "#profile-add-popup .popup__close"
-);
-let profileAddPopupForm = document.querySelector(
-  "#profile-add-popup .popup__form"
-);
-let profileAddPopupNameInput = document.querySelector(
-  "#profile-add-popup .popup__input[name=card-name]"
-);
-let profileAddPopupDescriptionInput = document.querySelector(
-  "#profile-add-popup .popup__input[name=image-link]"
-);
-
-profileAddButton.addEventListener("click", openAddPopup);
-profileAddPopupCloseButton.addEventListener("click", closeAddPopup);
-
-function openAddPopup() {
-  profileAddPopup.classList.add("popup_visible");
-}
-
-function closeAddPopup() {
-  profileAddPopup.classList.remove("popup_visible");
-}
 /* Карточки мест */
 
 const initialCards = [
@@ -96,17 +72,51 @@ const initialCards = [
   },
 ];
 
-const cards = document.querySelector(".elements");
-
 const cardsElements = initialCards.map(({ name, link }) =>
   createCard(name, link)
 );
 
 cards.append(...cardsElements);
 
-/* */
+/* Модалка добавления новых карточек */
 
-/* */
+let cardAddButton = document.querySelector(".profile__add-button");
+
+let cardAddPopup = document.querySelector("#card-add-popup");
+let cardAddPopupCloseButton = document.querySelector(
+  "#card-add-popup .popup__close"
+);
+let cardAddPopupForm = document.querySelector("#card-add-popup .popup__form");
+let cardAddPopupNameInput = document.querySelector(
+  "#card-add-popup .popup__input[name=card-name]"
+);
+let cardAddPopupImageLinkInput = document.querySelector(
+  "#card-add-popup .popup__input[name=image-link]"
+);
+
+cardAddButton.addEventListener("click", openAddPopup);
+cardAddPopupCloseButton.addEventListener("click", closeAddPopup);
+cardAddPopupForm.addEventListener("submit", createPopup);
+
+function openAddPopup() {
+  cardAddPopup.classList.add("popup_visible");
+}
+
+function closeAddPopup() {
+  cardAddPopup.classList.remove("popup_visible");
+}
+
+function createPopup(event) {
+  event.preventDefault();
+  const cardElement = createCard(
+    cardAddPopupNameInput.value,
+    cardAddPopupImageLinkInput.value
+  );
+  cards.prepend(cardElement);
+  closeAddPopup();
+}
+
+/* Общие функции */
 
 function createCard(name, imgSrc) {
   const card = document.createElement("article");
